@@ -73,9 +73,9 @@ To create an actor, simply create a class extending from one of the actor base t
 There are a few base types available for an Actor:
 
  * `Actor` - Simplest type which provides "enabled" and "visible" properties as well as a few key methods.
- * `SimpleMovingActor` - Basic actor with x+y coordinates, width and height and velocity handling built in.
- * `SpriteMovingActor` - Extends from `SimpleMovingActor`, used for bitmap based (rather than painted) actors.
- * `AnimatedMovingActor`- Extends from `SpriteMovingActor`, used for animated (multiple frame) sprite based actors.
+ * `SimpleMovingActor` - Basic actor with x+y coordinates, width and height and velocity supported.
+ * `SpriteMovingActor` - Extends from `SimpleMovingActor`, bitmap based (rather than painted) actors.
+ * `AnimatedMovingActor`- Extends from `SpriteMovingActor`, animated (multiple frame) sprite based actors.
  
 Creating the actor just looks like:
 
