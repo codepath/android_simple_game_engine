@@ -1,7 +1,5 @@
 package com.codepath.simplegame.actors;
 
-
-
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -9,7 +7,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 
 public class SpriteMovingActor extends SimpleMovingActor {
-	private Bitmap bitmap;
+	protected Bitmap bitmap;
 	
 	public SpriteMovingActor(Context c, int drawable, int x, int y) {
 		super(x, y);
