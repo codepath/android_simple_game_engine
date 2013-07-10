@@ -1,38 +1,22 @@
-package com.codepath.simplegame;
+package com.codepath.simplegame.threads;
 
-import android.annotation.SuppressLint;
+import com.codepath.simplegame.AbstractGamePanel;
+
 import android.graphics.Canvas;
 import android.view.SurfaceHolder;
 
-public class GameLoopThread extends Thread {
+public class FrameGameLoopThread extends BaseGameThread {
 	// desired fps
 	private final static int MAX_FPS = 50;
 	// maximum number of frames to be skipped
 	private final static int MAX_FRAME_SKIPS = 5;
 	// the frame period
 	private final static int FRAME_PERIOD = 1000 / MAX_FPS;
-
-	// Store references to the game panel and holder
-	private SurfaceHolder surfaceHolder;
-	private AbstractGamePanel gamePanel;
-
-	// flag to hold game state
-	private boolean running;
-	public void setRunning(boolean running) {
-		this.running = running;
+	
+	public FrameGameLoopThread(SurfaceHolder surfaceHolder, AbstractGamePanel gamePanel) {
+		super(surfaceHolder, gamePanel);
 	}
 
-	public boolean isRunning() {
-		return this.running;
-	}
-
-	public GameLoopThread(SurfaceHolder surfaceHolder, AbstractGamePanel gamePanel) {
-		super();
-		this.surfaceHolder = surfaceHolder;
-		this.gamePanel = gamePanel;
-	}
-
-	@SuppressLint("WrongCall")
 	@Override
 	public void run() {
 		Canvas canvas;
@@ -60,6 +44,7 @@ public class GameLoopThread extends Thread {
 					if (canvas != null) {
 					  this.gamePanel.render(canvas);
 					}
+					
 					// calculate how long did the cycle take
 					timeDiff = System.currentTimeMillis() - beginTime;
 					// calculate sleep time
@@ -71,7 +56,9 @@ public class GameLoopThread extends Thread {
 							// send the thread to sleep for a short period
 							// very useful for battery saving
 							Thread.sleep(sleepTime);	
-						} catch (InterruptedException e) {}
+						} catch (InterruptedException e) {
+							// Do nothing
+						}
 					}
 					
 					while (sleepTime < 0 && framesSkipped < MAX_FRAME_SKIPS) {
