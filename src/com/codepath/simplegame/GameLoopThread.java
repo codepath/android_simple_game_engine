@@ -42,7 +42,9 @@ public class GameLoopThread extends Thread {
 		int framesSkipped;	// number of frames being skipped 
 
 		sleepTime = 0;
-		
+		// execute onStart
+		this.gamePanel.onStart();
+		// execute game loop
 		while (running) {
 			canvas = null;
 			// try locking the canvas for exclusive pixel editing
@@ -55,7 +57,9 @@ public class GameLoopThread extends Thread {
 					// update game state
 					this.gamePanel.onTimer();
 					// draws the canvas on the panel
-					this.gamePanel.onDraw(canvas);
+					if (canvas != null) {
+					  this.gamePanel.render(canvas);
+					}
 					// calculate how long did the cycle take
 					timeDiff = System.currentTimeMillis() - beginTime;
 					// calculate sleep time

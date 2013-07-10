@@ -6,8 +6,8 @@ public class Velocity {
 	public static final int DIRECTION_UP	= -1;
 	public static final int DIRECTION_DOWN	= 1;
 
-	private float xVelocity;	// velocity value on the X axis
-	private float yVelocity;	// velocity value on the Y axis
+	private float xSpeed;	// velocity value on the X axis
+	private float ySpeed;	// velocity value on the Y axis
 
 	private int xDirection; // direction traveling X (i.e DIRECTION_RIGHT)
 	private int yDirection; // direction traveling Y (i.e DIRECTION_UP)
@@ -17,24 +17,24 @@ public class Velocity {
 	}
 
 	public Velocity(float xv, float yv) {
-		this.xVelocity = xv;
-		this.yVelocity = yv;
+		this.xSpeed = xv;
+		this.ySpeed = yv;
 		this.xDirection = DIRECTION_RIGHT;
 		this.yDirection = DIRECTION_DOWN;
 	}
 
 	public float getXSpeed() {
-		return xVelocity;
+		return xSpeed;
 	}
 	public Velocity setXSpeed(float xv) {
-		this.xVelocity = xv;
+		this.xSpeed = xv;
 		return this;
 	}
 	public float getYSpeed() {
-		return yVelocity;
+		return ySpeed;
 	}
 	public Velocity setYSpeed(float yv) {
-		this.yVelocity = yv;
+		this.ySpeed = yv;
 		return this;
 	}
 

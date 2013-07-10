@@ -13,7 +13,7 @@ import android.view.SurfaceView;
 public abstract class AbstractGamePanel extends SurfaceView implements SurfaceHolder.Callback {
 	private GameLoopThread thread;
 	private Paint paint;
-	private int panelColor;
+	private int panelColor = Color.GRAY;
 
 	public AbstractGamePanel(Context context) {
 		super(context);
@@ -29,8 +29,7 @@ public abstract class AbstractGamePanel extends SurfaceView implements SurfaceHo
 	}
 
 	// Draw the game board
-	@Override
-	protected void onDraw(Canvas canvas) {
+	protected void render(Canvas canvas) {
 		// clear canvas
 		canvas.drawColor(panelColor);
 		// draw canvas
@@ -47,8 +46,6 @@ public abstract class AbstractGamePanel extends SurfaceView implements SurfaceHo
 		// start game thread
 		thread.setRunning(true);
 		thread.start();
-        // execute onStart
-		onStart();
 	}
 
 	@Override

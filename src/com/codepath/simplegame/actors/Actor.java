@@ -6,13 +6,11 @@ import android.graphics.Paint;
 public abstract class Actor {
 	// Defines the default paint
 	private Paint paint;
-	private boolean visible;
 	private boolean enabled;
 	
 	public Actor() {
 		// Enable and make visible
 		this.enabled = true;
-		this.visible = true;
 	    // Setup paint for actor
 		this.paint = new Paint();
 		stylePaint(paint);
@@ -20,14 +18,6 @@ public abstract class Actor {
 	
 	public Paint getPaint() {
 		return paint;
-	}
-	
-	public boolean isVisible() {
-		return visible;
-	}
-	
-	public void setVisible(boolean state) {
-		this.visible = state;
 	}
 	
 	public boolean isEnabled() {

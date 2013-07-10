@@ -2,6 +2,7 @@ package com.codepath.simplegame.actors;
 
 import android.graphics.Point;
 import android.graphics.Rect;
+import android.graphics.RectF;
 
 import com.codepath.simplegame.Velocity;
 
@@ -23,7 +24,7 @@ public abstract class SimpleMovingActor extends Actor {
 	
 	// Called to move position based on the velocity
 	public void move() {
-		if (this.isEnabled() && this.isVisible()) {
+		if (this.isEnabled()) {
 			pos.x += (velocity.getXSpeed() * velocity.getXDirection());
 			pos.y += (velocity.getYSpeed() * velocity.getYDirection());
 		}
@@ -46,8 +47,18 @@ public abstract class SimpleMovingActor extends Actor {
 		return velocity;
 	}
 	
+	public Point getPoint() {
+		return pos;
+	}
+	
 	public Rect getRect() {
-		return new Rect(getX(), getY(), getX() + width, getY() + height);
+		Rect rect = new Rect();
+		getRectF().round(rect);
+		return rect;
+	}
+	
+	public RectF getRectF() {
+		return new RectF(getX(), getY(), getX() + width, getY() + height);
 	}
 	
 	public void setPos(int x, int y) {
