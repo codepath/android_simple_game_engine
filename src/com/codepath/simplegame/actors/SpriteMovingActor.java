@@ -11,7 +11,7 @@ public class SpriteMovingActor extends SimpleMovingActor {
 	
 	public SpriteMovingActor(Context c, int drawable, int x, int y) {
 		super(x, y);
-		bitmap = BitmapFactory.decodeResource(c.getResources(), drawable);
+		setDrawable(c, drawable);
 		setDimensions(bitmap.getWidth(), bitmap.getHeight());
 	}
 	
@@ -21,11 +21,19 @@ public class SpriteMovingActor extends SimpleMovingActor {
 
 	@Override
 	public void draw(Canvas canvas) {
-	  canvas.drawBitmap(bitmap, getX() - (bitmap.getWidth() / 2), getY() - (bitmap.getHeight() / 2), null);
+		canvas.drawBitmap(bitmap, getX(), getY(), null);
 	}
 	
 	@Override
 	public void stylePaint(Paint p) {
 		// Override to do nothing by default, optionally implemented by descendants
+	}
+	
+	public void setBitmap(Bitmap bitmap) {
+		this.bitmap = bitmap;
+	}
+	
+	public void setDrawable(Context c, int drawable) {
+		this.bitmap = BitmapFactory.decodeResource(c.getResources(), drawable);
 	}
 }
