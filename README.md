@@ -3,6 +3,10 @@ android_simple_game_engine
 
 Simple 2D Android Game Framework.
 
+## Warning
+
+**This repository is not currently maintained and is a simple proof of concept. Feel free to improve this code but keep in mind that this is likely not to work for anything beyond the most of basic use cases.**
+
 ## Usage
 
 Change the "main" game activity to extend from `GameActivity`:
